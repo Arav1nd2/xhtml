@@ -110,12 +110,14 @@ class HTMLXVisitor extends BaseHTMLXVisitor {
   }
 
   HTMLX(ctx) {
-    if (ctx.HTMLX) {
-      var openingTag, attributes, closingTag, children;
+    if (!ctx.text) {
+      var openingTag,
+        attributes,
+        closingTag,
+        children = null;
       ({ tag: openingTag, attributes } = this.visit(ctx.OpeningTag));
-      children = ctx.HTMLX.map((child) => this.visit(child));
-      closingTag = ctx.closingTag[0].image;
-      closingTag = closingTag.slice(2, -1);
+      if (ctx.HTMLX) children = ctx.HTMLX.map((child) => this.visit(child));
+      closingTag = ctx.closingTag[0].image.slice(2, -1);
       if (openingTag !== closingTag)
         throw new Error(
           `Mismatch in opening tag ${openingTag} and closing tag ${closingTag}`
@@ -126,7 +128,7 @@ class HTMLXVisitor extends BaseHTMLXVisitor {
         attributes,
         children,
       };
-    } else {
+    } else if (ctx.text) {
       return { text: ctx.text[0].image };
     }
   }
