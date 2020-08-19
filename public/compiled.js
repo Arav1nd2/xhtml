@@ -5,10 +5,12 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var state = undefined;
 var lookup = {};
 
+// getter function to get the state
 function getState(key) {
   return state[key];
 }
 
+// Set state only through this
 function updateState(key, newValue) {
   state[key] = newValue;
   lookup[key].forEach(function (el) {
@@ -22,11 +24,15 @@ var makeHTML = function makeHTML(dom) {
     var flag = false;
     Object.keys(dom.attributes).forEach(function (attr) {
       if (attr === "xData") {
+        // Handle tags which listen to a particular state value
+
+        // Add this element to a lookup, which can be used later when the state gets updated
         lookup[dom.attributes[attr]] = lookup[dom.attributes[attr]] ? [].concat(_toConsumableArray(lookup[dom.attributes[attr]]), [el]) : [el];
         var val = getState(dom.attributes[attr]);
         el.innerText = val;
         flag = true;
       } else if (attr === "xModel") {
+        lookup[dom.attributes[attr]] = lookup[dom.attributes[attr]] ? [].concat(_toConsumableArray(lookup[dom.attributes[attr]]), [el]) : [el];
         el.value = state[dom.attributes[attr]];
         el.addEventListener("input", function (event) {
           updateState(dom.attributes[attr], event.target.value);
