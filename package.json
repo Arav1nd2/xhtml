@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel ./lib/index.js --out-file ./public/compiled.js"
+    "build": "babel ./lib --out-file ./public/compiled.js",
+    "compile": "./utils/scripts/build.sh"
   },
   "author": "",
   "license": "ISC",
