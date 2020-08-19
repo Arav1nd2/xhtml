@@ -2,13 +2,16 @@
   <div>
     <h1 class="hello" name="aravind">This is a template</h1>
     <p xData="paragraph"></p>
-    <input name="hello"></input>
+    <input name="hello" xModel="paragraph"></input>
+    <input name="world" xModel="body"></input>
+    <h3 xData="body"></h3>
   </div>
 </template>
 <script>
   {
     "state": {
-      "paragraph": "This is awesome"
+      "paragraph": "This is awesome",
+      "body": "The world is wreck"
     }
   }
 </script>
