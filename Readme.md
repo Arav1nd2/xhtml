@@ -1,6 +1,5 @@
 ## A basic frontend library
 
-
 ### Features
 
 - Custom templating
@@ -10,8 +9,7 @@
 
 - Clone the repo and cd into the root of the application
 - Run `npm install`
-- Run `npm run compile`
-- Run `npm run build`
+- Run `npm run dev`
 - Open the index.html file in `public/index.html` using a dev live server or simply by opening it in browser
 
 # STILL LOT MORE FEATURES TO BE IMPLEMENTED!
