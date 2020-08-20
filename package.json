@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel ./lib --out-file ./public/compiled.js",
-    "compile": "./utils/scripts/build.sh"
+    "compile": "node ./utils/readFiles > ./lib/payload.js",
+    "dev": "npm run compile && npm run build"
   },
   "author": "",
   "license": "ISC",
